@@ -42,33 +42,19 @@ def save_transcript(video_url):
         video_title = get_video_title(video_id)
         sanitized_title = re.sub(r'[\\/*?:"<>|]', "", video_title)
         
-        try:
-            if os.name == 'nt':    
-                # Ensure "Transcripts" folder exists
-                folder_path = "Transcripts"
-                if not os.path.exists(folder_path):
-                    os.makedirs(folder_path)
-                
-                # Save transcript to a text file in the "Transcripts" folder
-                file_path = os.path.join(folder_path, f"{sanitized_title}.txt")
-                with open(file_path, "w", encoding="utf-8") as file:
-                    file.write(transcript_text)
-                
-                save_message = f"Transcript saved as '{file_path}'"
-                print(Fore.GREEN + save_message)
-        except:
-            # Ensure "Transcripts" folder exists
-                folder_path = "//sdcard//Download//Transcripts"
-                if not os.path.exists(folder_path):
-                    os.makedirs(folder_path)
-                
-                # Save transcript to a text file in the "Transcripts" folder
-                file_path = os.path.join(folder_path, f"{sanitized_title}.txt")
-                with open(file_path, "w", encoding="utf-8") as file:
-                    file.write(transcript_text)
-                
-                save_message = f"Transcript saved as '{file_path}'"
-                print(Fore.GREEN + save_message)
+    
+        # Ensure "Transcripts" folder exists
+        folder_path = "Transcripts"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        
+        # Save transcript to a text file in the "Transcripts" folder
+        file_path = os.path.join(folder_path, f"{sanitized_title}.txt")
+        with open(file_path, "w", encoding="utf-8") as file:
+            file.write(transcript_text)
+        
+        save_message = f"Transcript saved as '{file_path}'"
+        print(Fore.GREEN + save_message)
 
     except TranscriptsDisabled:
         print(Fore.YELLOW+"Transcripts are disabled for this video.")
