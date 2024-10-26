@@ -58,7 +58,7 @@ def save_transcript(video_url):
                 print(Fore.GREEN + save_message)
         except:
             # Ensure "Transcripts" folder exists
-                folder_path = "/data/data/com.termux/files/home/storage/downloads/Transcripts"
+                folder_path = "//sdcard//Download//Transcripts"
                 if not os.path.exists(folder_path):
                     os.makedirs(folder_path)
                 
